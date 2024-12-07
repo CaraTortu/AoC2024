@@ -8,7 +8,7 @@ import (
 	"AoC24/utils"
 )
 
-func checkReport(report []int, rules map[int][]int) bool {
+func day5CheckReport(report []int, rules map[int][]int) bool {
 	for i := 0; i < len(report)-1; i++ {
 		page := report[i]
 		pageToCompare := report[i+1]
@@ -34,7 +34,7 @@ func checkReport(report []int, rules map[int][]int) bool {
 	return true
 }
 
-func getRulesAndReports(filename string) (map[int][]int, [][]int) {
+func day5GetRulesAndReports(filename string) (map[int][]int, [][]int) {
 	contents, err := utils.ReadFile(filename)
 	if err != nil {
 		log.Fatalf("Error reading file: %v", err)
@@ -75,7 +75,7 @@ func getRulesAndReports(filename string) (map[int][]int, [][]int) {
 
 func sortReport(report []int, rules map[int][]int) {
 	for {
-		if checkReport(report, rules) {
+		if day5CheckReport(report, rules) {
 			return
 		}
 
@@ -105,11 +105,11 @@ func sortReport(report []int, rules map[int][]int) {
 }
 
 func Day5A(filename string) int {
-	rules, reports := getRulesAndReports(filename)
+	rules, reports := day5GetRulesAndReports(filename)
 	validReports := 0
 
 	for _, report := range reports {
-		if checkReport(report, rules) {
+		if day5CheckReport(report, rules) {
 			validReports += report[len(report)/2]
 		}
 	}
@@ -118,12 +118,12 @@ func Day5A(filename string) int {
 }
 
 func Day5B(filename string) int {
-	rules, reports := getRulesAndReports(filename)
+	rules, reports := day5GetRulesAndReports(filename)
 	validReports := 0
 
 	for _, report := range reports {
 
-		if checkReport(report, rules) {
+		if day5CheckReport(report, rules) {
 			continue
 		}
 

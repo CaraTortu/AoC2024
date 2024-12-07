@@ -17,7 +17,7 @@ func abs_diff(a, b int) int {
 	return b - a
 }
 
-func getLists(filename string) ([]int, []int) {
+func day1GetLists(filename string) ([]int, []int) {
 	// Read the file
 	contents, err := utils.ReadFile(filename)
 	if err != nil {
@@ -49,7 +49,7 @@ func getLists(filename string) ([]int, []int) {
 func Day1A(filename string) int {
 	distance := 0
 
-	listA, listB := getLists(filename)
+	listA, listB := day1GetLists(filename)
 
 	// Sort each array
 	sort.Ints(listA)
@@ -66,7 +66,7 @@ func Day1A(filename string) int {
 func Day1B(filename string) int {
 	distance := 0
 
-	listA, listB := getLists(filename)
+	listA, listB := day1GetLists(filename)
 
 	// Get occurences for listB
 	occurences := make(map[int]int)

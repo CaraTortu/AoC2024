@@ -8,7 +8,7 @@ import (
 	"AoC24/utils"
 )
 
-func findSubstrings(s, sub string) int {
+func day4FindSubstrings(s, sub string) int {
 	count := 0
 	subLen := len(sub)
 	sLen := len(s)
@@ -24,7 +24,7 @@ func findSubstrings(s, sub string) int {
 	return count
 }
 
-func getWindow(contents []string, i, j, x, y int) string {
+func day4GetWindow(contents []string, i, j, x, y int) string {
 	window := ""
 	for k := 0; k < x; k++ {
 		for l := 0; l < y; l++ {
@@ -44,8 +44,8 @@ func Day4A(filename string) int {
 
 	// Check for horizontal matches
 	horizontal := strings.Join(contents, " ")
-	count += findSubstrings(horizontal, "XMAS")
-	count += findSubstrings(horizontal, "SAMX")
+	count += day4FindSubstrings(horizontal, "XMAS")
+	count += day4FindSubstrings(horizontal, "SAMX")
 
 	// Check for vertical matches
 	vertical := ""
@@ -56,8 +56,8 @@ func Day4A(filename string) int {
 		vertical += " "
 	}
 
-	count += findSubstrings(vertical, "XMAS")
-	count += findSubstrings(vertical, "SAMX")
+	count += day4FindSubstrings(vertical, "XMAS")
+	count += day4FindSubstrings(vertical, "SAMX")
 
 	// Check for diagonal matches
 	// Diagonal from top left to bottom right
@@ -84,8 +84,8 @@ func Day4A(filename string) int {
 		diagonal += " "
 	}
 
-	count += findSubstrings(diagonal, "XMAS")
-	count += findSubstrings(diagonal, "SAMX")
+	count += day4FindSubstrings(diagonal, "XMAS")
+	count += day4FindSubstrings(diagonal, "SAMX")
 
 	// Diagonal from top right to bottom left
 	diagonal = ""
@@ -107,8 +107,8 @@ func Day4A(filename string) int {
 		diagonal += " "
 	}
 
-	count += findSubstrings(diagonal, "XMAS")
-	count += findSubstrings(diagonal, "SAMX")
+	count += day4FindSubstrings(diagonal, "XMAS")
+	count += day4FindSubstrings(diagonal, "SAMX")
 
 	return count
 }
@@ -124,7 +124,7 @@ func Day4B(filename string) int {
 
 	for i := 0; i < len(contents)-2; i++ {
 		for j := 0; j < len(contents[i])-2; j++ {
-			window := getWindow(contents, i, j, 3, 3) // 3x3 window
+			window := day4GetWindow(contents, i, j, 3, 3) // 3x3 window
 			count += len(reg.FindAllString(window, -1))
 		}
 	}

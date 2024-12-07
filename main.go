@@ -14,6 +14,7 @@ func main() {
 		days.Day3A, days.Day3B,
 		days.Day4A, days.Day4B,
 		days.Day5A, days.Day5B,
+		days.Day6A, days.Day6B,
 	}
 
 	for day, solver := range day_funcs {
@@ -27,6 +28,7 @@ func main() {
 		}
 
 		start := time.Now()
+
 		result := solver(fmt.Sprintf("./inputs/day%d.txt", actual_day))
 		elapsed := time.Since(start)
 		fmt.Printf("[i] Day %d%s took %v: %d\n", actual_day, letter, elapsed, result)

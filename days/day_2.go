@@ -8,7 +8,7 @@ import (
 	"AoC24/utils"
 )
 
-func getReports(filename string) [][]int {
+func day2GetReports(filename string) [][]int {
 	contents, err := utils.ReadFile(filename)
 	if err != nil {
 		log.Fatalf("Error reading file: %v", err)
@@ -32,7 +32,7 @@ func getReports(filename string) [][]int {
 	return lists
 }
 
-func isValidReport(report []int) bool {
+func day2IsValidReport(report []int) bool {
 	increasing := report[0] < report[1]
 	valid := true
 	for i := 1; i < len(report); i++ {
@@ -60,12 +60,12 @@ func isValidReport(report []int) bool {
 }
 
 func Day2A(filename string) int {
-	reports := getReports(filename)
+	reports := day2GetReports(filename)
 
 	safe_reports := 0
 
 	for _, report := range reports {
-		if isValidReport(report) {
+		if day2IsValidReport(report) {
 			safe_reports++
 		}
 	}
@@ -74,11 +74,11 @@ func Day2A(filename string) int {
 }
 
 func Day2B(filename string) int {
-	reports := getReports(filename)
+	reports := day2GetReports(filename)
 
 	safe_reports := 0
 	for _, report := range reports {
-		if isValidReport(report) {
+		if day2IsValidReport(report) {
 			safe_reports++
 			continue
 		}
@@ -90,7 +90,7 @@ func Day2B(filename string) int {
 			copy(new_report, report[:i])
 			copy(new_report[i:], report[i+1:])
 
-			if isValidReport(new_report) {
+			if day2IsValidReport(new_report) {
 				safe_reports++
 				break
 			}
