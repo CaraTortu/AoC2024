@@ -21,14 +21,14 @@ func TestDay6B(t *testing.T) {
 }
 
 func TestLoop(t *testing.T) {
-	board := getBoard("../inputs/day6_test_loop.txt")
+	board := day6GetBoard("../inputs/day6_test_loop.txt")
 	actual := board.isLoop()
 	expected := true
 	if actual != expected {
 		t.Errorf("actual: %v, expected: %v", actual, expected)
 	}
 
-	board = getBoard("../inputs/day6_test.txt")
+	board = day6GetBoard("../inputs/day6_test.txt")
 	actual = board.isLoop()
 	expected = false
 	if actual != expected {
@@ -37,7 +37,7 @@ func TestLoop(t *testing.T) {
 }
 
 func TestClone(t *testing.T) {
-	board := getBoard("../inputs/day6_test.txt")
+	board := day6GetBoard("../inputs/day6_test.txt")
 	clone := board.clone()
 	clone.Player.X = 1
 	clone.Player.Y = 1
