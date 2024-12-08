@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"AoC24/utils"
+	"github.com/hashicorp/go-set/v3"
 )
 
 const (
@@ -23,6 +24,10 @@ type Day6Player struct {
 	X         int
 	Y         int
 	Direction int
+}
+
+func (p *Day6Player) Hash() int {
+	return p.X * p.Y * (p.Direction + 1)
 }
 
 type Day6Board struct {
@@ -132,7 +137,7 @@ func (b *Day6Board) move() {
 
 func (b *Day6Board) isLoop() bool {
 	board := b.clone()
-	playerHistory := map[Day6Player]bool{}
+	playerHistory := set.New[Day6Player](len(b.cells) / 2)
 
 	for {
 		if board.Player.Y <= 0 || board.Player.Y >= board.height-1 || board.Player.X <= 0 || board.Player.X >= board.width-1 {
@@ -141,11 +146,11 @@ func (b *Day6Board) isLoop() bool {
 
 		board.move()
 
-		if _, ok := playerHistory[board.Player]; ok {
+		if playerHistory.Contains(board.Player) {
 			return true
 		}
 
-		playerHistory[board.Player] = true
+		playerHistory.Insert(board.Player)
 	}
 }
 

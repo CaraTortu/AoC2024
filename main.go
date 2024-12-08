@@ -8,6 +8,13 @@ import (
 )
 
 func main() {
+	/*f, perr := os.Create("cpu.pprof")
+	if perr != nil {
+		log.Fatal(perr)
+	}
+	pprof.StartCPUProfile(f)
+	defer pprof.StopCPUProfile()
+	*/
 	day_funcs := []func(string) int{
 		days.Day1A, days.Day1B,
 		days.Day2A, days.Day2B,
@@ -15,6 +22,7 @@ func main() {
 		days.Day4A, days.Day4B,
 		days.Day5A, days.Day5B,
 		days.Day6A, days.Day6B,
+		days.Day7A, days.Day7B,
 	}
 
 	for day, solver := range day_funcs {
